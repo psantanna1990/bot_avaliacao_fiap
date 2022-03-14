@@ -3,7 +3,7 @@
 Este bot permite consultas as API's do projeto Brasil API
 
 site para a documentação das API's que estamos ultilizando:
-(Brasil API)[https://brasilapi.com.br/docs] 
+[Brasil API](https://brasilapi.com.br/docs) 
 
 Recursos que estarão disponíveis
 
