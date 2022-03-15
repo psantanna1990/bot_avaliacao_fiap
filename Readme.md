@@ -7,13 +7,13 @@ site para a documentação das API's que estamos ultilizando:
 
 Recursos que estarão disponíveis
 
- - CEP - em desenvolviemento
- - DDD - em desenvolviemento
- - Bank - em desenvolviemento
- - CNPJ - em desenvolviemento
- - IBGE - em desenvolviemento
- - Feriados Nacionais - em desenvolviemento
- - Tabela FIPE - em desenvolviemento
+ - CEP - em desenvolvimento
+ - DDD - em desenvolvimento
+ - Bank - em desenvolvimento
+ - CNPJ - em desenvolvimento
+ - IBGE - em desenvolvimento
+ - Feriados Nacionais - em desenvolvimento
+ - Tabela FIPE - em desenvolvimento
 
 
 ## Membros da equipe:
