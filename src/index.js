@@ -1,48 +1,58 @@
+const { AsyncLocalStorage } = require("async_hooks");
 const TelegramBot = require("node-telegram-bot-api");
-const token = process.env.TELEGRAM_BOT_KEY;
+const token = '5234516887:AAGWVWwDaWf4T5omlvtzrMAZWCAGDl06tyw'
 const bot = new TelegramBot(token, { polling: true });
-const consultaCepPorNumero = require("./funcionalidades/ConsultaCEP/consultarCEPporNumero");
 
-let iteracoesPorUsuario = new Map();
 
-bot.on("message", async (msg) => {
+bot.onText(/\/echo (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
+  const resp = match[1]; // the captured "whatever"
+  bot.sendMessage(chatId, resp);
+});
 
-  let mensagemMenu = `Olá ${msg.chat.first_name} bem vindo ao nosso bot :) \nInforme o número da opção que deseja: \n\n  1 - Consultar CEP `;
+bot.on("message", (msg) => {
+  const chatId = msg.chat.id;
+  const hora = 1; //new Date().getHours();
+  var saudacao;
 
-  if (iteracoesPorUsuario.get(chatId) === undefined) {
-    iteracoesPorUsuario.set(chatId, { ultimaIteracao: "ENVIADO_MENU" });
-
-    bot.sendMessage(chatId, mensagemMenu);
-  } else if (
-    iteracoesPorUsuario.get(chatId).ultimaIteracao === "ENVIADO_MENU"
-  ) {
-    // Caso a opção selecionada seja 1
-    if (msg.text.trim() == 1) {
-      iteracoesPorUsuario.set(chatId, { ultimaIteracao: "SOLICITADO_CEP" });
-      bot.sendMessage(
-        chatId,
-        `Informe o CEP que deseja consultar (apenas números)`
-      );
+  if ((hora >= 6) && (hora <= 12)) {
+      saudacao = "Boa Dia";
+    } else if ((hora > 12) && (hora <= 18)){
+        saudacao = "Boa Tarde";
     } else {
-      // Caso não exista a opção enviada
-      iteracoesPorUsuario.set(chatId, { ultimaIteracao: "ENVIADO_MENU" });
-      bot.sendMessage(
-        chatId,
-        "Envie apenas o número que aparece no menu \n" + mensagemMenu
-      );
-    }
+        saudacao = "Boa Noite";
+  }
 
-    console.log(msg);
-  } else if (
-    iteracoesPorUsuario.get(chatId).ultimaIteracao === "SOLICITADO_CEP"
-  ) {
-    if (msg.text.trim().length === 8) {
-      let mensagemDadosCepEnviar =
-        await consultaCepPorNumero.consultaDadosPorCEP(msg.text);
-
-      bot.sendMessage(chatId, mensagemDadosCepEnviar);
-    } else {
-    }
+  switch (msg.text.toLowerCase()) {
+        case "oi": case "ola": case "boa tarde": case "boa noite": case "bom dia":
+            bot.sendMessage(chatId, `${saudacao} ${msg.chat.first_name}! \nBem vindo ao bot da Aula da Fiap! 👍🏽`);
+            bot.sendMessage(chatId, `Vamos aprender a configurar seu GIT ?`);
+            console.log(msg);
+            break;
+        case "sim":
+            bot.sendMessage(chatId, `${msg.chat.first_name}, selecione uma das opcoes abaixo: \n 1 - Configurar Usuario \n 2 - Configurar Email \n 3 - Bonus`);
+            console.log(msg);
+            break;
+        case "nao":
+            bot.sendMessage(chatId, `Que pena ${msg.chat.first_name}! \nQuando quiser estou aqui para te ajudar 😉`);
+            console.log(msg);
+            break;
+        case "1":
+            bot.sendMessage(chatId, `Para configurar seu usuario utilize o codigo abaixo em seu terminal`);
+            bot.sendMessage(chatId, `git config --global user.name "Fulano de Tal"`);
+            console.log(msg);
+            break;
+        case "2":
+            bot.sendMessage(chatId, `Para configurar seu email utilize o codigo abaixo em seu terminal`);
+            bot.sendMessage(chatId, `git config --global user.email fulanodetal@exemplo.br"`);
+            console.log(msg);
+            break;
+        case "3":
+            bot.sendMessage(chatId, `Oops! Essa opcao ainda nao esta pronta`);
+            console.log(msg);
+            break;
+        default:
+            bot.sendMessage(chatId, `Desculpe, nao consigo entender isso! 😕`);
+            console.log(msg);
   }
 });
