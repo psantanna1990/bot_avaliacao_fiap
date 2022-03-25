@@ -7,12 +7,12 @@ site para a documentação das API's que estamos ultilizando:
 
 Recursos que estarão disponíveis
 
- - CEP - em desenvolvimento
- - DDD - em desenvolvimento
- - Bank - em desenvolvimento
- - CNPJ - em desenvolvimento
- - IBGE - em desenvolvimento
- - Feriados Nacionais - em desenvolvimento
+ - CEP - Funcional
+ - DDD - Funcional
+ - Bank - Em desenvolvimento
+ - CNPJ - Em desenvolvimento
+ - IBGE - Em desenvolvimento
+ - Feriados Nacionais - Em desenvolvimento
 
 ## Para rodar o projeto:
 
@@ -32,8 +32,8 @@ Recursos que estarão disponíveis
 
 ## Membros da equipe:
 
- - Carlos Mateus Borges Junior
- - Daniel de Oliveira Carvalho
- - Pedro Sant Anna Lima Oliveira   
- - Willian Prestes Correia Cellos
+ - Carlos Mateus Borges Junior - RM344974
+ - Daniel de Oliveira Carvalho - RM344795
+ - Pedro Sant Anna Lima Oliveira - RM344804
+ - Willian Prestes Correia Cellos - RM344812
 
