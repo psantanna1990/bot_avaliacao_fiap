@@ -5,6 +5,6 @@ services:
   app:
     build: .
     environment:
-      TELEGRAM_BOT_KEY: 5239154159:AAFcbgaQEGlHmprYf2Lb7XAu-bigK7E3y5E # Colocar aqui a key do bot do telegram
+      TELEGRAM_BOT_KEY: # Colocar aqui a key do bot do telegram
       BRASIL_API_URL: https://brasilapi.com.br/api
     restart: on-failure
