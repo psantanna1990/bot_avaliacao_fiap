@@ -13,14 +13,15 @@ exports.consultaDadosPorCEP = async (cep) => {
   await axios
     .request(options)
     .then(function (response) {
-      console.log("to aqui");
       console.log(response.data);
 
       retornoCep = `Logradouro: ${response.data.street} \nBairro: ${response.data.neighborhood} \nCidade: ${response.data.city} \nEstado: ${response.data.state}`;
+      retornoCep += "\n\n Digite menu para voltar para o menu inicial";
     })
     .catch(function (error) {
       console.error(error);
-      return "Não foi possível consultar o CEP";
+      retornoCep =
+        "Não foi possível consultar o CEP \n\n Digite menu para voltar para o menu inicial";
     });
 
   return retornoCep;

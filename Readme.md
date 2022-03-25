@@ -13,7 +13,6 @@ Recursos que estarão disponíveis
  - CNPJ - em desenvolvimento
  - IBGE - em desenvolvimento
  - Feriados Nacionais - em desenvolvimento
- - Tabela FIPE - em desenvolvimento
 
 ## Para rodar o projeto:
 
