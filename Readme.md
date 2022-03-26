@@ -7,12 +7,12 @@ site para a documentação das API's que estamos ultilizando:
 
 Recursos que estarão disponíveis
 
- - CEP - em desenvolvimento
- - DDD - em desenvolvimento
- - Bank - em desenvolvimento
- - CNPJ - em desenvolvimento
- - IBGE - em desenvolvimento
- - Feriados Nacionais - em desenvolvimento
+ - CEP - Funcional
+ - DDD - Funcional
+ - Bank - Em desenvolvimento
+ - CNPJ - Em desenvolvimento
+ - IBGE - Em desenvolvimento
+ - Feriados Nacionais - Em desenvolvimento
 
 ## Para rodar o projeto:
 
