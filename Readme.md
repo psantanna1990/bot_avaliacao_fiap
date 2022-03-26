@@ -9,7 +9,7 @@ Recursos que estarão disponíveis
 
  - CEP - Funcional
  - DDD - Funcional
- - CNPJ - Em desenvolvimento
+ - CNPJ - Funcional
 
 ## Para rodar o projeto:
 
