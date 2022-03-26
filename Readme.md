@@ -9,10 +9,7 @@ Recursos que estarão disponíveis
 
  - CEP - Funcional
  - DDD - Funcional
- - Bank - Em desenvolvimento
  - CNPJ - Em desenvolvimento
- - IBGE - Em desenvolvimento
- - Feriados Nacionais - Em desenvolvimento
 
 ## Para rodar o projeto:
 
