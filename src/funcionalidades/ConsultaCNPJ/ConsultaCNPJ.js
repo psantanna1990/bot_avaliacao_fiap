@@ -2,7 +2,7 @@
 
 const axios = require("axios");
 
-exports.consultaPorDDD = async (ddd) => {
+exports.consultaPorCNPJ = async (ddd) => {
   let retorno = "";
 
   const options = {
@@ -21,13 +21,15 @@ exports.consultaPorDDD = async (ddd) => {
         const cid = response.data.cities[i];
         retorno += "\n" + cid;
       }
+
+
+      retorno += '\n\n Digite menu para voltar para o menu inicial'
     })
     .catch(function (error) {
       console.error(error);
-      retorno = "Não foi possível consultar as cidades Atendidas ";
+      retorno =
+        "Não foi possível consultar as cidades Atendidas \n\n Digite menu para voltar para o menu inicial";
     });
-
-  retorno += "\n\n Digite menu para voltar para o menu inicial";
 
   return retorno;
 };
