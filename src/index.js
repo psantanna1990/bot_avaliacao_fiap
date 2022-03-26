@@ -3,6 +3,7 @@ const token = process.env.TELEGRAM_BOT_KEY;
 const bot = new TelegramBot(token, { polling: true });
 const consultaCepPorNumero = require("./funcionalidades/ConsultaCEP/consultarCEPporNumero");
 const consultaCidadesDDD = require("./funcionalidades/ConsultarDDD/ConsultarCidadesAtendidasPeloCodigo");
+const consultaCNPJ = require("./funcionalidades/ConsultaCNPJ/ConsultaCNPJ");
 
 let iteracoesPorUsuario = new Map();
 
@@ -31,7 +32,7 @@ const respondeMenu = (codigoAcao, chatId) => {
       bot.sendMessage(
         chatId,
         `Opção não Localizada \n\nSomente são aceitas as opções informadas no menu \nInforme o número da opção que deseja: 
-        \n1 - Consultar CEP \n2- Consultar cidades atendidas pelo DDD \n\nA qualquer momento digite menu para voltar para o menu inicial`
+        \n1 - Consultar CEP \n2- Consultar cidades atendidas pelo DDD \n3- Dados CNPJ (Situação Cadastral, Endereço) \n\nA qualquer momento digite MENU para voltar para o menu inicial`
       );
       break;
   }
@@ -40,11 +41,16 @@ const respondeMenu = (codigoAcao, chatId) => {
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
 
-  let mensagemMenu = `Olá ${msg.chat.first_name} bem vindo ao nosso bot :) \nInforme o número da opção que deseja: \n\n  
-  1 - Consultar CEP \n  2- Consultar cidades atendidas pelo DDD \n\n\n 
-  A qualquer momento digite menu para voltar para o menu inicial`;
+  console.log(msg);
 
-  if (iteracoesPorUsuario.get(chatId) === undefined || msg.text === "menu") {
+  let mensagemMenu = `Olá ${msg.chat.first_name} bem vindo ao nosso bot :) \nInforme o número da opção que deseja: \n\n  
+  1 - Consultar CEP \n  2- Consultar cidades atendidas pelo DDD \n  3- Dados CNPJ (Situação Cadastral, Endereço) \n\n\n 
+  A qualquer momento digite MENU para voltar para o menu inicial`;
+
+  if (
+    iteracoesPorUsuario.get(chatId) === undefined ||
+    msg.text.trim().toUpperCase() === "MENU"
+  ) {
     iteracoesPorUsuario.set(chatId, { ultimaIteracao: "ENVIADO_MENU" });
     bot.sendMessage(chatId, mensagemMenu);
   } else {
@@ -62,6 +68,12 @@ bot.on("message", async (msg) => {
         bot.sendMessage(
           chatId,
           await consultaCidadesDDD.consultaPorDDD(msg.text.trim())
+        );
+        break;
+      case "SOLICITADO_CONSULTA_CNPJ":
+        bot.sendMessage(
+          chatId,
+          await consultaCNPJ.consultaPorCNPJ(msg.text.trim())
         );
         break;
       default:

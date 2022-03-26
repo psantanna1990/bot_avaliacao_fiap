@@ -27,7 +27,7 @@ exports.consultaPorDDD = async (ddd) => {
       retorno = "Não foi possível consultar as cidades Atendidas ";
     });
 
-  retorno += "\n\n Digite menu para voltar para o menu inicial";
+  retorno += "\n\n Digite MENU para voltar para o menu inicial";
 
   return retorno;
 };

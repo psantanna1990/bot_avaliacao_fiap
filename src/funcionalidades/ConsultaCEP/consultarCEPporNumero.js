@@ -16,12 +16,12 @@ exports.consultaDadosPorCEP = async (cep) => {
       console.log(response.data);
 
       retornoCep = `Logradouro: ${response.data.street} \nBairro: ${response.data.neighborhood} \nCidade: ${response.data.city} \nEstado: ${response.data.state}`;
-      retornoCep += "\n\n Digite menu para voltar para o menu inicial";
+      retornoCep += "\n\n Digite MENU para voltar para o menu inicial";
     })
     .catch(function (error) {
       console.error(error);
       retornoCep =
-        "Não foi possível consultar o CEP \n\n Digite menu para voltar para o menu inicial";
+        "Não foi possível consultar o CEP \n\n Digite MENU para voltar para o menu inicial";
     });
 
   return retornoCep;
